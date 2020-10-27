@@ -9,6 +9,13 @@
   <xacro:property name="W" value="${dictionary['W']}"/>   
   <xacro:property name="H" value="${dictionary['H']}"/>   
 
+  <material name="Black">
+    <color rgba="0.0 0.0 0.0 1.0"/>
+  </material>
+  <material name="light_black">
+    <color rgba="0.2 0.2 0.2 1.0"/>
+  </material>
+
   <link name="base_footprint"/>
 
   <joint name="base_joint" type="fixed">
@@ -55,7 +62,7 @@
       <geometry>
         <mesh filename="package://diff_drive/meshes/wheels/left_tire.stl" scale="0.005 0.005 0.005"/>
       </geometry>
-      <material name="dark"/>
+      <material name="Black"/>
     </visual>
 
     <collision>
@@ -87,7 +94,7 @@
       <geometry>
         <mesh filename="package://diff_drive/meshes/wheels/right_tire.stl" scale="0.005 0.005 0.005"/>
       </geometry>
-      <material name="dark"/>
+      <material name="Black"/>
     </visual>
 
     <collision>

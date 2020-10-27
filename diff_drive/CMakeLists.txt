@@ -114,10 +114,10 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
-include_directories(
- include
- ${catkin_INCLUDE_DIRS}
-)
+# include_directories(
+#  include
+#  ${catkin_INCLUDE_DIRS}
+# )
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
@@ -186,10 +186,9 @@ install(DIRECTORY meshes urdf
  )
 
 ## Mark other files for installation (e.g. launch and bag files, etc.)
-install(FILES 
-urdf/ddrive.urdf.xacro
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-)
+# install(FILES 
+#   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+# )
 
 #############
 ## Testing ##
