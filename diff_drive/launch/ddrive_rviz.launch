@@ -7,7 +7,7 @@
 
   <!-- <node name="tf_footprint_base" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 base_link base_footprint 40" /> -->
 
-   <!-- <node name="arm_traj" pkg="homework2" type="arm_traj" /> -->
+   <node name="follow_rect" pkg="diff_drive" type="follow_rect" />
 
    <group if="$(arg rviz)">
         <node name="rviz" pkg="rviz" type="rviz" args="-d $(find diff_drive)/rviz/ddrive.rviz" />
