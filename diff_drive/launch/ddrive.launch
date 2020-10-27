@@ -6,7 +6,7 @@
    <arg name="z_pos" default="0.0"/>
 
    <rosparam command="load" file="$(find diff_drive)/config/ddrive.yaml" />
-   <param name="robot_description" command="$(find xacro)/xacro $(find diff_drive)/urdf/ddrive.urdf.xacro" />
+   <param name="robot_description" command="$(find xacro)/xacro --inorder $(find diff_drive)/urdf/ddrive.urdf.xacro" />
 
    <group if="$(arg Gazebo)">
         <include file="$(find gazebo_ros)/launch/empty_world.launch" >

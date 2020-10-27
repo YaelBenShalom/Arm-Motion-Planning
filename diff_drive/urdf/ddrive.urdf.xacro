@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <robot name="ddrive" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <!-- <xacro:include filename="$(find turtlebot3_description)/urdf/common_properties.xacro"/>
-  <xacro:include filename="$(find turtlebot3_description)/urdf/turtlebot3_burger.gazebo.xacro"/> -->
-  <xacro:property name="ddrive" value="$(find diff_drive)/config/ddrive.yaml" />
+  <xacro:include filename="$(find diff_drive)/urdf/ddrive.gazebo.xacro"/>
+
+  <xacro:property name="ddrive" value="$(find diff_drive)/config/ddrive.yaml"/>
   <xacro:property name="dictionary" value="${load_yaml(ddrive)}"/>
   <xacro:property name="L" value="${dictionary['L']}"/>
   <xacro:property name="W" value="${dictionary['W']}"/>   
@@ -109,12 +109,12 @@
   <joint name="caster_bottom_back_joint" type="fixed">
     <parent link="base_link"/>
     <child link="caster_bottom_back_link"/>
-    <origin xyz="${-3*L/7} 0 ${-H/2 - 0.030}" rpy="-1.57 0 0"/>
+    <origin xyz="${-3*L/7} 0 ${-H/2 - 0.026}" rpy="-1.57 0 0"/>
   </joint>
 
   <link name="caster_bottom_back_link">
     <visual>
-      <origin rpy="1.57 0 0" xyz="0 0.001 0"/>
+      <origin rpy="1.57 0 0" xyz="0 0 0"/>
       <geometry>
         <sphere radius="0.03"/>
       </geometry>
@@ -122,7 +122,7 @@
     </visual>
 
     <collision>
-      <origin rpy="1.57 0 0" xyz="0 0.001 0"/>
+      <origin rpy="1.57 0 0" xyz="0 0 0"/>
       <geometry>
         <sphere radius="0.03"/>
       </geometry>
@@ -140,12 +140,12 @@
   <joint name="caster_top_back_joint" type="fixed">
     <parent link="base_link"/>
     <child link="caster_top_back_link"/>
-    <origin xyz="${-3*L/7} 0 ${H/2 + 0.030}" rpy="-1.57 0 0"/>
+    <origin xyz="${-3*L/7} 0 ${H/2 + 0.026}" rpy="-1.57 0 0"/>
   </joint>
 
   <link name="caster_top_back_link">
     <visual>
-      <origin rpy="1.57 0 0" xyz="0 0.001 0"/>
+      <origin rpy="1.57 0 0" xyz="0 0 0"/>
       <geometry>
         <sphere radius="0.03"/>
       </geometry>
@@ -153,7 +153,7 @@
     </visual>
 
     <collision>
-      <origin rpy="1.57 0 0" xyz="0 0.001 0"/>
+      <origin rpy="1.57 0 0" xyz="0 0 0"/>
       <geometry>
         <sphere radius="0.03"/>
       </geometry>

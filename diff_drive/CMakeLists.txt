@@ -7,7 +7,10 @@ project(diff_drive)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS)
+find_package(catkin REQUIRED COMPONENTS
+  urdf
+  xacro
+)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -101,7 +104,7 @@ find_package(catkin REQUIRED COMPONENTS)
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES diff_drive
-CATKIN_DEPENDS
+  CATKIN_DEPENDS urdf xacro
 #  DEPENDS system_lib
 )
 
@@ -112,8 +115,8 @@ CATKIN_DEPENDS
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
-# ${catkin_INCLUDE_DIRS}
+ include
+ ${catkin_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -155,10 +158,11 @@ include_directories(
 
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
-# catkin_install_python(PROGRAMS
+catkin_install_python(PROGRAMS
+nodes/follow_rect
 #   scripts/my_python_script
-#   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-# )
+DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
 
 ## Mark executables for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html
@@ -175,15 +179,15 @@ include_directories(
 # )
 
 ## Mark cpp header files for installation
-# install(DIRECTORY include/${PROJECT_NAME}/
-#   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+install(DIRECTORY meshes urdf
+  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
 #   FILES_MATCHING PATTERN "*.h"
 #   PATTERN ".svn" EXCLUDE
-# )
+ )
 
 ## Mark other files for installation (e.g. launch and bag files, etc.)
-install(FILES
-  urdf/ddrive.urdf.xacro
+install(FILES 
+urdf/ddrive.urdf.xacro
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 )
 
