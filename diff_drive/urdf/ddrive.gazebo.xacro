@@ -6,8 +6,8 @@
   </gazebo>
 
   <gazebo reference="wheel_left_link">
-    <mu1>0.1</mu1>
-    <mu2>0.1</mu2>
+    <mu1>0.3</mu1>
+    <mu2>0.3</mu2>
     <kp>500000.0</kp>
     <kd>10.0</kd>
     <minDepth>0.001</minDepth>
@@ -17,8 +17,8 @@
   </gazebo>
 
   <gazebo reference="wheel_right_link">
-    <mu1>0.1</mu1>
-    <mu2>0.1</mu2>
+    <mu1>0.3</mu1>
+    <mu2>0.3</mu2>
     <kp>500000.0</kp>
     <kd>10.0</kd>
     <minDepth>0.001</minDepth>
@@ -27,75 +27,25 @@
     <material>Gazebo/FlatBlack</material>
   </gazebo>
 
-  <!-- <gazebo reference="caster_bottom_back_link">
-    <mu1>0.1</mu1>
-    <mu2>0.1</mu2>
+  <gazebo reference="caster_bottom_back_link">
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
     <kp>1000000.0</kp>
     <kd>100.0</kd>
     <minDepth>0.001</minDepth>
     <maxVel>1.0</maxVel>
-    <fdir1>1 0 0</fdir1>
     <material>Gazebo/FlatBlack</material>
-  </gazebo> -->
+  </gazebo>
 
-     <gazebo reference="caster_bottom_back_link">
-        <mu1>0.0</mu1>
-        <mu2>0.0</mu2>
-        <kp>1000000.0</kp>
-        <kd>100.0</kd>
-        <minDepth>0.001</minDepth>
-        <maxVel>1.0</maxVel>
-        <material>Gazebo/FlatBlack</material>
-    </gazebo>
-
-
-  <!-- <gazebo reference="caster_top_back_link">
-    <mu1>0.1</mu1>
-    <mu2>0.1</mu2>
-    <kp>1000000.0</kp>
-    <kd>100.0</kd>
-    <minDepth>0.001</minDepth>
-    <maxVel>1.0</maxVel>
-    <fdir1>1 0 0</fdir1>
-    <material>Gazebo/FlatBlack</material>
-  </gazebo> -->
-
-
-   <gazebo reference="caster_top_back_link">
-        <mu1>0.0</mu1>
-        <mu2>0.0</mu2>
-        <kp>1000000.0</kp>
-        <kd>100.0</kd>
-        <minDepth>0.001</minDepth>
-        <maxVel>1.0</maxVel>
-        <material>Gazebo/FlatBlack</material>
-    </gazebo>
-
-
-  <!-- <gazebo>
-    <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
-      <commandTopic>cmd_vel</commandTopic>
-      <odometryTopic>odom</odometryTopic>
-      <odometryFrame>odom</odometryFrame>
-      <odometrySource>world</odometrySource>
-      <publishOdomTF>true</publishOdomTF>
-      <robotBaseFrame>base_footprint</robotBaseFrame>
-      <publishWheelTF>false</publishWheelTF>
-      <publishTf>true</publishTf>
-      <publishWheelJointState>true</publishWheelJointState>
-      <legacyMode>false</legacyMode>
-      <updateRate>30</updateRate>
-      <leftJoint>wheel_left_joint</leftJoint>
-      <rightJoint>wheel_right_joint</rightJoint>
-      <topJoint>caster_top_back_joint</topJoint>
-      <bottomJoint>caster_bottom_back_joint</bottomJoint>
-      <wheelSeparation>0.160</wheelSeparation>
-      <wheelDiameter>0.066</wheelDiameter>
-      <wheelAcceleration>1</wheelAcceleration>
-      <wheelTorque>10</wheelTorque>
-      <rosDebugLevel>na</rosDebugLevel>
-    </plugin>
-  </gazebo> -->
+  <gazebo reference="caster_top_back_link">
+      <mu1>0.0</mu1>
+      <mu2>0.0</mu2>
+      <kp>1000000.0</kp>
+      <kd>100.0</kd>
+      <minDepth>0.001</minDepth>
+      <maxVel>1.0</maxVel>
+      <material>Gazebo/FlatBlack</material>
+  </gazebo>
 
   <gazebo>
     <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
@@ -110,7 +60,6 @@
       <commandTopic>diff/cmd_vel</commandTopic>
       <odometryTopic>diff/odom</odometryTopic>
       <odometryFrame>odom</odometryFrame>
-      <!-- <robotBaseFrame>base_link</robotBaseFrame> -->
       <publishWheelTF>false</publishWheelTF>
       <publishOdomTF>true</publishOdomTF>
       <robotBaseFrame>base_footprint</robotBaseFrame>

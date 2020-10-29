@@ -1,3 +1,11 @@
-  L: 0.8
-  W: 0.5
-  H: 0.2
+  box_L: 0.8
+  box_W: 0.5
+  box_H: 0.2
+  box_mass: 3
+  wheel_scale: 5
+
+  width: 6
+  height: 3
+  period: 60
+  pub_freq: 100
+  velocity: 0.1
