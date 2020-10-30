@@ -6,8 +6,8 @@
   </gazebo>
 
   <gazebo reference="wheel_left_link">
-    <mu1>0.3</mu1>
-    <mu2>0.3</mu2>
+    <mu1>0.5</mu1>
+    <mu2>0.5</mu2>
     <kp>500000.0</kp>
     <kd>10.0</kd>
     <minDepth>0.001</minDepth>
@@ -17,8 +17,8 @@
   </gazebo>
 
   <gazebo reference="wheel_right_link">
-    <mu1>0.3</mu1>
-    <mu2>0.3</mu2>
+    <mu1>0.5</mu1>
+    <mu2>0.5</mu2>
     <kp>500000.0</kp>
     <kd>10.0</kd>
     <minDepth>0.001</minDepth>
@@ -38,13 +38,13 @@
   </gazebo>
 
   <gazebo reference="caster_top_back_link">
-      <mu1>0.0</mu1>
-      <mu2>0.0</mu2>
-      <kp>1000000.0</kp>
-      <kd>100.0</kd>
-      <minDepth>0.001</minDepth>
-      <maxVel>1.0</maxVel>
-      <material>Gazebo/FlatBlack</material>
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>100.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>1.0</maxVel>
+    <material>Gazebo/FlatBlack</material>
   </gazebo>
 
   <gazebo>
