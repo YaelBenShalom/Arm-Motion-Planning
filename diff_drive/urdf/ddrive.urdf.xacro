@@ -9,7 +9,9 @@
   <xacro:property name="box_W" value="${dictionary['box_W']}"/>   
   <xacro:property name="box_H" value="${dictionary['box_H']}"/>   
   <xacro:property name="box_mass" value="${dictionary['box_mass']}"/> 
-    <xacro:property name="wheel_scale" value="${dictionary['wheel_scale']}"/> 
+  <xacro:property name="wheel_scale" value="${dictionary['wheel_scale']}"/> 
+  <xacro:property name="caster_radius" value="${dictionary['caster_radius']}"/> 
+  <xacro:property name="caster_mass" value="${dictionary['caster_mass']}"/> 
 
   <material name="Black">
     <color rgba="0.0 0.0 0.0 1.0"/>
@@ -45,8 +47,8 @@
     <inertial>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <mass value="${box_mass}"/>
-      <inertia ixx="${box_mass*(box_W**2+box_H**2)/12}" ixy="0" ixz="0"
-               iyy="${box_mass*(box_L**2+box_H**2)/12}" iyz="0"
+      <inertia ixx="${box_mass*(box_W**2+box_H**2)/12}" ixy="0.0" ixz="0.0"
+               iyy="${box_mass*(box_L**2+box_H**2)/12}" iyz="0.0"
                izz="${box_mass*(box_L**2+box_W**2)/12}"/>
     </inertial>
   </link>
@@ -133,16 +135,16 @@
     <collision>
       <origin rpy="1.57 0 0" xyz="0 0 0"/>
       <geometry>
-        <sphere radius="0.03"/>
+        <sphere radius="${caster_radius}"/>
       </geometry>
     </collision>
 
     <inertial>
       <origin xyz="0 0 0" />
-      <mass value="0.005" />
-      <inertia ixx="0.001" ixy="0.0" ixz="0.0"
-               iyy="0.001" iyz="0.0"
-               izz="0.001" />
+      <mass value="${caster_mass}" />
+      <inertia ixx="${(2/5)*caster_mass*caster_radius**2}" ixy="0.0" ixz="0.0"
+               iyy="${(2/5)*caster_mass*caster_radius**2}" iyz="0.0"
+               izz="${(2/5)*caster_mass*caster_radius**2}" />
     </inertial>
   </link>
 
@@ -156,7 +158,7 @@
     <visual>
       <origin rpy="1.57 0 0" xyz="0 0 0"/>
       <geometry>
-        <sphere radius="0.03"/>
+        <sphere radius="${caster_radius}"/>
       </geometry>
       <material name="Black"/>
     </visual>
@@ -170,10 +172,10 @@
 
     <inertial>
       <origin xyz="0 0 0" />
-      <mass value="0.005" />
-      <inertia ixx="0.001" ixy="0.0" ixz="0.0"
-               iyy="0.001" iyz="0.0"
-               izz="0.001" />
+      <mass value="${caster_mass}" />
+      <inertia ixx="${(2/5)*caster_mass*caster_radius**2}" ixy="0.0" ixz="0.0"
+               iyy="${(2/5)*caster_mass*caster_radius**2}" iyz="0.0"
+               izz="${(2/5)*caster_mass*caster_radius**2}" />
     </inertial>
   </link>
 

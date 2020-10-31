@@ -31,7 +31,7 @@ from sympy import symbols, Eq, Function, cos, sin, atan2, pi
 import tf
 import tf2_ros
 
-class FollowRect():
+class FlipOver():
     """ Publish a geometry_msgs/Twist of the linear and angular
     velocity to the robot's cmd_vel at a fixed rate 
     """
@@ -40,11 +40,11 @@ class FollowRect():
         self.H = rospy.get_param("height")                  # initializing the height of the rectangular figure
         self.T = rospy.get_param("period")                  # initializing the amount of time it takes to complete one round
         self.R = rospy.get_param("pub_freq")                # initializing the frequency at which to publish the messages
-        self.V = rospy.get_param("linear_velocity")         # initializing the linear velocity of the robot
+        self.V = rospy.get_param("Flip_velocity")         # initializing the linear velocity of the robot
         self.Omega = rospy.get_param("angular_velocity")    # initializing the angular velocity of the robot
 
         self.sub_odom = rospy.Subscriber("/diff/odom", Odometry, self.position_callback)
-        self.pub_vel = rospy.Publisher("diff/cmd_vel", Twist, queue_size = 10)
+        self.pub_vel = rospy.Publisher("diff/cmd_vel", Twist, queue_size = 0)
         self.path_pub = rospy.Publisher("path", Path, queue_size = 10)
 
         self.rate = rospy.Rate(self.R)
@@ -72,7 +72,7 @@ class FollowRect():
         """
         self.x = data.pose.pose.position.x - self.x_init
         self.y = data.pose.pose.position.y - self.y_init
-        self.angle = data.pose.pose.orientation.z
+        self.angle = data.pose.pose.orientation.y
 
 
     def twist_pub(self, x, w):
@@ -91,11 +91,11 @@ class FollowRect():
         self.path.header.stamp = rospy.Time.now()
         self.path.header.frame_id = "world"
         rospy.Subscriber("/diff/odom", Odometry, self.position_callback)
-        self.path.poses.append(PoseStamped(header = self.path.header, 
-                                        pose = Pose(
-                                            position = Point(self.x, self.y, 0), 
-                                            orientation = Quaternion(0, 0, 0, 1))))
-        self.path_pub.publish(self.path)
+        # self.path.poses.append(PoseStamped(header = self.path.header, 
+        #                                 pose = Pose(
+        #                                     position = Point(self.x, self.y, 0), 
+        #                                     orientation = Quaternion(0, 0, 0, 1))))
+        # self.path_pub.publish(self.path)
         self._t = rospy.get_time() - self.init_t
         twist = self.twist_pub(x, w)
         self.pub_vel.publish(twist)
@@ -108,46 +108,23 @@ class FollowRect():
 
     def run(self):
         rospy.logdebug(f"Run Message")
+        count = 0
         while not rospy.is_shutdown() and self.x < self.W:
-            rospy.logdebug(f"1. angle = {self.angle}, x = {self.x}, y = {self.y}")
+            count += 1
+            rospy.logdebug(f"1. velocity = {self.V}, angle = {self.angle}, x = {self.x}, y = {self.y}")
             self.move(self.V, 0)
-        self.move(0, 0)
-        while not rospy.is_shutdown() and self.angle < 0.55:
-            rospy.logdebug(f"2. angle = {self.angle}, x = {self.x}, y = {self.y}")
-            self.move(0, self.Omega)
-        self.move(0, 0)
-        while not rospy.is_shutdown() and self.y < self.H:
-            rospy.logdebug(f"3. angle = {self.angle}, x = {self.x}, y = {self.y}")
+        self.V *= -1
+        while not rospy.is_shutdown():
+            rospy.logdebug(f"2. velocity = {self.V}, angle = {self.angle}, x = {self.x}, y = {self.y}")
             self.move(self.V, 0)
-        self.move(0, 0)
-        while not rospy.is_shutdown() and self.angle < 0.98:
-            rospy.logdebug(f"4. angle = {self.angle}, x = {self.x}, y = {self.y}")
-            self.move(0, self.Omega)
-        self.move(0, 0)
-        while not rospy.is_shutdown() and self.x > 0:
-            rospy.logdebug(f"5. angle = {self.angle}, x = {self.x}, y = {self.y}")
-            self.move(self.V, 0)
-        self.move(0, 0)   
-        while not rospy.is_shutdown() and self.angle > 0.84:
-            rospy.logdebug(f"6. angle = {self.angle}, x = {self.x}, y = {self.y}")
-            self.move(0, self.Omega)
-        self.move(0, 0)    
-        while not rospy.is_shutdown() and self.y > 0:
-            rospy.logdebug(f"7. angle = {self.angle}, x = {self.x}, y = {self.y}")
-            self.move(self.V, 0)
-        self.move(0, 0)    
-        while not rospy.is_shutdown() and self.angle > 0.1:
-            rospy.logdebug(f"8. angle = {self.angle}, x = {self.x}, y = {self.y}")
-            self.move(0, self.Omega)
-        self.move(0, 0) 
         rospy.logdebug(f"Finised")
 
 
 def main():
     """ The main() function. """
-    rospy.init_node('follow_rect', log_level = rospy.DEBUG)
-    rect = FollowRect()
-    rect.run()
+    rospy.init_node('flip_over', log_level = rospy.DEBUG)
+    flip = FlipOver()
+    flip.run()
     rospy.spin()
 
 if __name__ == '__main__':

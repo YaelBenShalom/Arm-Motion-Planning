@@ -3,6 +3,8 @@
   box_H: 0.2
   box_mass: 4
   wheel_scale: 5
+  caster_radius: 0.03
+  caster_mass: 0.005
 
   width: 6
   height: 6
@@ -10,3 +12,4 @@
   pub_freq: 100
   linear_velocity: 0.06
   angular_velocity: 0.06
+  Flip_velocity: 10

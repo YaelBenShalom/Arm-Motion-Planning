@@ -8,7 +8,8 @@
    <rosparam command="load" file="$(find diff_drive)/config/ddrive.yaml" />
    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find diff_drive)/urdf/ddrive.urdf.xacro" />
 
-   <node name="follow_rect" pkg="diff_drive" type="follow_rect" />
+   <!-- <node name="follow_rect" pkg="diff_drive" type="follow_rect" /> -->
+   <!-- <node name="flip_over" pkg="diff_drive" type="flip_over" /> -->
 
    <group if="$(arg Gazebo)">
         <include file="$(find gazebo_ros)/launch/empty_world.launch" >
