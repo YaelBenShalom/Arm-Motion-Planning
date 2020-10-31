@@ -109,14 +109,15 @@ class FlipOver():
     def run(self):
         rospy.logdebug(f"Run Message")
         count = 0
-        while not rospy.is_shutdown() and self.x < self.W:
+        while not rospy.is_shutdown() and self.x < self.W+4:
             count += 1
             rospy.logdebug(f"1. velocity = {self.V}, angle = {self.angle}, x = {self.x}, y = {self.y}")
             self.move(self.V, 0)
         self.V *= -1
-        while not rospy.is_shutdown():
+        while not rospy.is_shutdown()and self.x > 0:
             rospy.logdebug(f"2. velocity = {self.V}, angle = {self.angle}, x = {self.x}, y = {self.y}")
             self.move(self.V, 0)
+        self.move(0, 0)
         rospy.logdebug(f"Finised")
 
 

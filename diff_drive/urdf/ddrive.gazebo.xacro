@@ -6,23 +6,23 @@
   </gazebo>
 
   <gazebo reference="wheel_left_link">
-    <mu1>0.5</mu1>
-    <mu2>0.5</mu2>
+    <mu1>10</mu1>
+    <mu2>10</mu2>
     <kp>500000.0</kp>
     <kd>10.0</kd>
     <minDepth>0.001</minDepth>
-    <maxVel>0.1</maxVel>
+    <!-- <maxVel>0.1</maxVel> -->
     <fdir1>1 0 0</fdir1>
     <material>Gazebo/FlatBlack</material>
   </gazebo>
 
   <gazebo reference="wheel_right_link">
-    <mu1>0.5</mu1>
-    <mu2>0.5</mu2>
+    <mu1>10</mu1>
+    <mu2>10</mu2>
     <kp>500000.0</kp>
     <kd>10.0</kd>
     <minDepth>0.001</minDepth>
-    <maxVel>0.1</maxVel>
+    <!-- <maxVel>0.1</maxVel> -->
     <fdir1>1 0 0</fdir1>
     <material>Gazebo/FlatBlack</material>
   </gazebo>
@@ -56,7 +56,7 @@
       <rightJoint>wheel_right_joint</rightJoint>
       <wheelSeparation>0.5045</wheelSeparation>
       <wheelDiameter>0.017</wheelDiameter>
-      <wheelTorque>10</wheelTorque>
+      <wheelTorque>100</wheelTorque>
       <commandTopic>diff/cmd_vel</commandTopic>
       <odometryTopic>diff/odom</odometryTopic>
       <odometryFrame>odom</odometryFrame>

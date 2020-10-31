@@ -1,14 +1,14 @@
 <launch>
-   <arg name="Gazebo" default="True" />
+   <!-- <arg name="Gazebo" default="True" />
 
    <arg name="x_pos" default="-3.0"/>
    <arg name="y_pos" default="-3.0"/>
-   <arg name="z_pos" default="0.1"/>
+   <arg name="z_pos" default="0.5"/>
 
    <rosparam command="load" file="$(find diff_drive)/config/ddrive.yaml" />
-   <param name="robot_description" command="$(find xacro)/xacro --inorder $(find diff_drive)/urdf/ddrive.urdf.xacro" />
+   <param name="robot_description" command="$(find xacro)/xacro $(find diff_drive)/urdf/ddrive.urdf.xacro" />
 
-   <!-- <node name="follow_rect" pkg="diff_drive" type="follow_rect" /> -->
+   <node name="follow_rect" pkg="diff_drive" type="follow_rect" />
    <node name="flip_over" pkg="diff_drive" type="flip_over" />
 
    <group if="$(arg Gazebo)">
@@ -17,6 +17,6 @@
         </include>
    </group>
 
-   <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model ddrive -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param robot_description" />
+   <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model ddrive -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param robot_description" /> -->
 
 </launch>

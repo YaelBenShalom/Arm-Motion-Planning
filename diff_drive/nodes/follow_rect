@@ -112,7 +112,7 @@ class FollowRect():
             rospy.logdebug(f"1. angle = {self.angle}, x = {self.x}, y = {self.y}")
             self.move(self.V, 0)
         self.move(0, 0)
-        while not rospy.is_shutdown() and self.angle < 0.55:
+        while not rospy.is_shutdown() and self.angle < 0.6675:
             rospy.logdebug(f"2. angle = {self.angle}, x = {self.x}, y = {self.y}")
             self.move(0, self.Omega)
         self.move(0, 0)
@@ -120,7 +120,7 @@ class FollowRect():
             rospy.logdebug(f"3. angle = {self.angle}, x = {self.x}, y = {self.y}")
             self.move(self.V, 0)
         self.move(0, 0)
-        while not rospy.is_shutdown() and self.angle < 0.98:
+        while not rospy.is_shutdown() and self.angle < 0.9998:
             rospy.logdebug(f"4. angle = {self.angle}, x = {self.x}, y = {self.y}")
             self.move(0, self.Omega)
         self.move(0, 0)
@@ -128,7 +128,7 @@ class FollowRect():
             rospy.logdebug(f"5. angle = {self.angle}, x = {self.x}, y = {self.y}")
             self.move(self.V, 0)
         self.move(0, 0)   
-        while not rospy.is_shutdown() and self.angle > 0.84:
+        while not rospy.is_shutdown() and self.angle > 0.75:
             rospy.logdebug(f"6. angle = {self.angle}, x = {self.x}, y = {self.y}")
             self.move(0, self.Omega)
         self.move(0, 0)    
@@ -136,7 +136,7 @@ class FollowRect():
             rospy.logdebug(f"7. angle = {self.angle}, x = {self.x}, y = {self.y}")
             self.move(self.V, 0)
         self.move(0, 0)    
-        while not rospy.is_shutdown() and self.angle > 0.1:
+        while not rospy.is_shutdown() and self.angle > 0.05:
             rospy.logdebug(f"8. angle = {self.angle}, x = {self.x}, y = {self.y}")
             self.move(0, self.Omega)
         self.move(0, 0) 
