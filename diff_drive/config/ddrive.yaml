@@ -12,5 +12,5 @@
   pub_freq: 100
   linear_velocity: 0.06
   angular_velocity: 0.06
-  Flip_velocity: 0.29 # With asphalt plane
+  Flip_velocity: 0.285 # With asphalt plane
   # Flip_velocity: 0.27 # Without asphalt plane

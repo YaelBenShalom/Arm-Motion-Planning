@@ -7,7 +7,6 @@ Panels:
         - /Global Options1
         - /Status1
         - /RobotModel1
-        - /RobotModel1/Status1
         - /TF1
         - /TF1/Frames1
         - /TF1/Tree1
@@ -115,6 +114,8 @@ Visualization Manager:
           Value: true
         caster_top_back_link:
           Value: true
+        odom:
+          Value: true
         wheel_left_link:
           Value: true
         wheel_right_link:
@@ -136,13 +137,15 @@ Visualization Manager:
               {}
             wheel_right_link:
               {}
+        odom:
+          {}
       Update Interval: 0
       Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: base_link
+    Fixed Frame: odom
     Frame Rate: 30
   Name: root
   Tools:
@@ -166,7 +169,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 12.086709022521973
+      Distance: 23.857017517089844
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -184,7 +187,7 @@ Visualization Manager:
       Near Clip Distance: 0.009999999776482582
       Pitch: 1.4403975009918213
       Target Frame: <Fixed Frame>
-      Yaw: 0.010398643091320992
+      Yaw: 0.015398642979562283
     Saved: ~
 Window Geometry:
   Displays:
@@ -203,4 +206,4 @@ Window Geometry:
     collapsed: false
   Width: 1200
   X: 358
-  Y: 70
+  Y: 33

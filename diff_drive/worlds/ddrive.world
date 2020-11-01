@@ -129,7 +129,45 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>0.028577 0.004764 0 0 -0 0</pose>
+      <pose>0.070516 -0.13626 0 0 -0 0</pose>
+    </model>
+    <model name='bus'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://bus/meshes/bus.obj</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <scale>0.01 0.01 0.01</scale>
+              <uri>model://bus/meshes/bus.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-7.7107 2.83044 0 0 -0 0</pose>
     </model>
     <model name='jersey_barrier'>
       <static>1</static>
@@ -271,47 +309,9 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>-4.97921 -7.02791 0 0 -0 0</pose>
+      <pose>6.8501 8.78743 0 0 -0 0</pose>
     </model>
-    <model name='Lamp Post'>
-      <static>1</static>
-      <link name='link'>
-        <collision name='collision'>
-          <geometry>
-            <mesh>
-              <uri>model://lamp_post/meshes/lamp_post.dae</uri>
-              <scale>3 3 3</scale>
-            </mesh>
-          </geometry>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-          <max_contacts>10</max_contacts>
-        </collision>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <uri>model://lamp_post/meshes/lamp_post.dae</uri>
-              <scale>3 3 3</scale>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>-0.05692 -0.030181 0 0 -0 0</pose>
-    </model>
-    <model name='jersey_barrier_1'>
+    <model name='jersey_barrier_0'>
       <static>1</static>
       <link name='link'>
         <visual name='visual'>
@@ -451,16 +451,16 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>-5.6836 7.56654 0 0 -0 0</pose>
+      <pose>6.91713 -8.40218 0 0 -0 0</pose>
     </model>
-    <model name='bus'>
+    <model name='Lamp Post'>
       <static>1</static>
       <link name='link'>
         <collision name='collision'>
           <geometry>
             <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://bus/meshes/bus.obj</uri>
+              <uri>model://lamp_post/meshes/lamp_post.dae</uri>
+              <scale>3 3 3</scale>
             </mesh>
           </geometry>
           <surface>
@@ -480,8 +480,8 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <scale>0.01 0.01 0.01</scale>
-              <uri>model://bus/meshes/bus.obj</uri>
+              <uri>model://lamp_post/meshes/lamp_post.dae</uri>
+              <scale>3 3 3</scale>
             </mesh>
           </geometry>
         </visual>
@@ -489,10 +489,48 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>7.88691 1.96145 0 0 -0 0</pose>
+      <pose>0.006026 9.17722 0 0 -0 0</pose>
+    </model>
+    <model name='Lamp Post_0'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>model://lamp_post/meshes/lamp_post.dae</uri>
+              <scale>3 3 3</scale>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://lamp_post/meshes/lamp_post.dae</uri>
+              <scale>3 3 3</scale>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-0.29007 -9.25376 0 0 -0 0</pose>
     </model>
     <model name='cardboard_box'>
-      <pose>-0.594938 -0.018638 0.15 0 -0 0</pose>
+      <pose>-0.733484 0.06942 0.15 0 -0 0</pose>
       <link name='link'>
         <inertial>
           <mass>2</mass>
@@ -549,7 +587,7 @@
       </link>
     </model>
     <model name='cardboard_box_0'>
-      <pose>-1.19034 0.146344 0.15 0 -0 0</pose>
+      <pose>-0.740799 0.118897 0.15 0 -0 0</pose>
       <link name='link'>
         <inertial>
           <mass>2</mass>
@@ -606,7 +644,7 @@
       </link>
     </model>
     <model name='cardboard_box_1'>
-      <pose>-0.598296 -0.006287 0.15 0 -0 0</pose>
+      <pose>-0.221219 0.393972 0.15 0 -0 0</pose>
       <link name='link'>
         <inertial>
           <mass>2</mass>
@@ -663,7 +701,7 @@
       </link>
     </model>
     <model name='cardboard_box_2'>
-      <pose>-0.603115 0.005775 0.15 0 -0 0</pose>
+      <pose>-0.225983 0.39391 0.15 0 -0 0</pose>
       <link name='link'>
         <inertial>
           <mass>2</mass>
@@ -720,7 +758,7 @@
       </link>
     </model>
     <model name='cardboard_box_3'>
-      <pose>-1.19838 0.163988 0.15 0 -0 0</pose>
+      <pose>-0.740799 0.118897 0.15 0 -0 0</pose>
       <link name='link'>
         <inertial>
           <mass>2</mass>
@@ -777,7 +815,7 @@
       </link>
     </model>
     <model name='cardboard_box_4'>
-      <pose>-1.18354 -0.316976 0.15 0 -0 0</pose>
+      <pose>0.266091 -0.174466 0.15 0 -0 0</pose>
       <link name='link'>
         <inertial>
           <mass>2</mass>
@@ -833,205 +871,6 @@
         <kinematic>0</kinematic>
       </link>
     </model>
-    <state world_name='default'>
-      <sim_time>2456 437000000</sim_time>
-      <real_time>36 773687113</real_time>
-      <wall_time>1604174233 10404278</wall_time>
-      <iterations>36609</iterations>
-      <model name='Lamp Post'>
-        <pose>0 9 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>0 9 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='Lamp Post_0'>
-        <pose>0 -9 0 0 -0 3.14</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>0 -9 0 0 -0 3.14</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='asphalt_plane'>
-        <pose>0 0 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>0 0 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='bus'>
-        <pose>-8 2 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>-8 2 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='cardboard_box'>
-        <pose>0.229235 0.860298 0.199 3.14159 0 -0.113984</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>0.229235 0.860298 0.199 3.14159 0 -0.113984</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>-0 -0 -0 0 -0 0</acceleration>
-          <wrench>-0 -0 -0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='cardboard_box_0'>
-        <pose>-1.16251 0.26313 0.497998 -3e-06 1e-06 0.227112</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>-1.16251 0.26313 0.497998 -3e-06 1e-06 0.227112</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>-0 0 0 0 -0 0</acceleration>
-          <wrench>-0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='cardboard_box_1'>
-        <pose>-0.032374 0.412112 0.297415 -2.32692 0 -0.455879</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>-0.032374 0.412112 0.297415 -2.32692 0 -0.455879</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>-0 -0 0 0 -0 0</acceleration>
-          <wrench>-0 -0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='cardboard_box_2'>
-        <pose>-0.554213 0.270895 0.299 0.181423 -1.57079 3.14159</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>-0.554213 0.270895 0.299 0.181423 -1.57079 3.14159</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='cardboard_box_3'>
-        <pose>-1.19484 0.162889 0.198999 -1e-06 -0 0.001284</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>-1.19484 0.162889 0.198999 -1e-06 -0 0.001284</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>-0 -0 -0 0 -0 0</acceleration>
-          <wrench>-0 -0 -0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='cardboard_box_4'>
-        <pose>-1.18354 -0.316976 0.199 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>-1.18354 -0.316976 0.199 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>-0 -0 0 0 -0 0</acceleration>
-          <wrench>-0 -0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='drc_practice_white_jersey_barrier'>
-        <pose>5 5 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>5 5 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='drc_practice_white_jersey_barrier_0'>
-        <pose>5 3.2 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>5 3.2 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='drc_practice_white_jersey_barrier_1'>
-        <pose>5 1.4 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>5 1.4 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='drc_practice_white_jersey_barrier_2'>
-        <pose>2 -7.8 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>2 -7.8 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='drc_practice_white_jersey_barrier_3'>
-        <pose>2 -6 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>2 -6 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='first_2015_trash_can'>
-        <pose>-0.590869 -0.244626 0.049998 -1.2e-05 1.2e-05 -0.008987</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>-0.590869 -0.244626 0.049998 -1.2e-05 1.2e-05 -0.008987</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>-3.44546 -0.817527 -1.12046 -0.932715 -0.064834 -3.12227</acceleration>
-          <wrench>-16.6442 -3.94928 -5.41268 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='ground_plane'>
-        <pose>0 0 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>0 0 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='jersey_barrier'>
-        <pose>7 -7 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>7 -7 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <model name='jersey_barrier_1'>
-        <pose>7 9 0 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>7 9 0 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
-      <light name='sun'>
-        <pose>0 0 10 0 -0 0</pose>
-      </light>
-    </state>
     <model name='drc_practice_white_jersey_barrier'>
       <static>1</static>
       <link name='link'>
@@ -1066,7 +905,7 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>1.77865 4.94756 0 0 -0 0</pose>
+      <pose>5.06443 6.02619 0 0 -0 0</pose>
     </model>
     <model name='drc_practice_white_jersey_barrier_0'>
       <static>1</static>
@@ -1102,7 +941,7 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>1.7478 3.17887 0 0 -0 0</pose>
+      <pose>5.05936 4.14367 0 0 -0 0</pose>
     </model>
     <model name='drc_practice_white_jersey_barrier_1'>
       <static>1</static>
@@ -1138,7 +977,7 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>1.73677 1.38724 0 0 -0 0</pose>
+      <pose>5.06013 2.29411 0 0 -0 0</pose>
     </model>
     <model name='drc_practice_white_jersey_barrier_2'>
       <static>1</static>
@@ -1174,7 +1013,7 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>1.71287 -3.1309 0 0 -0 0</pose>
+      <pose>3.18662 -8.67823 0 0 -0 0</pose>
     </model>
     <model name='drc_practice_white_jersey_barrier_3'>
       <static>1</static>
@@ -1210,7 +1049,7 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>1.69762 -4.90947 0 0 -0 0</pose>
+      <pose>3.17949 -6.87339 0 0 -0 0</pose>
     </model>
     <model name='first_2015_trash_can'>
       <link name='link'>
@@ -1257,52 +1096,213 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <pose>-0.592924 -0.245585 0 0 -0 0</pose>
+      <pose>-0.290365 -0.38494 0 0 -0 0</pose>
     </model>
+    <state world_name='default'>
+      <sim_time>445 121000000</sim_time>
+      <real_time>448 825033553</real_time>
+      <wall_time>1604182968 563167487</wall_time>
+      <iterations>445121</iterations>
+      <model name='Lamp Post'>
+        <pose>0 9 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0 9 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='Lamp Post_0'>
+        <pose>0 -9 0 0 -0 3.14</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0 -9 0 0 -0 3.14</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='asphalt_plane'>
+        <pose>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='bus'>
+        <pose>-7.7107 2.83044 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-7.7107 2.83044 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='cardboard_box'>
+        <pose>-0.731995 0.077809 0.796996 2e-06 -0 0.030729</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-0.731995 0.077809 0.796996 2e-06 -0 0.030729</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 -0 -0 -0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='cardboard_box_0'>
+        <pose>-0.740982 0.119774 0.497997 1e-06 -0 -3.4e-05</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-0.740982 0.119774 0.497997 1e-06 -0 -3.4e-05</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='cardboard_box_1'>
+        <pose>-0.221646 0.393968 0.497998 0 -0 2e-06</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-0.221646 0.393968 0.497998 0 -0 2e-06</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0 0 0 -0 -0 -0</acceleration>
+          <wrench>-0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='cardboard_box_2'>
+        <pose>-0.226028 0.393916 0.198999 0 -0 2e-06</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-0.226028 0.393916 0.198999 0 -0 2e-06</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0 -0 -0 0 -0 0</acceleration>
+          <wrench>-0 -0 -0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='cardboard_box_3'>
+        <pose>-0.740801 0.119141 0.198999 0 -0 1.7e-05</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-0.740801 0.119141 0.198999 0 -0 1.7e-05</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 -0 0 -0 0</acceleration>
+          <wrench>0 0 -0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='cardboard_box_4'>
+        <pose>0.266091 -0.174466 0.199 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0.266091 -0.174466 0.199 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>-0 0 0 -0 -0 -0</acceleration>
+          <wrench>-0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='drc_practice_white_jersey_barrier'>
+        <pose>6 6 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>6 6 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='drc_practice_white_jersey_barrier_0'>
+        <pose>6 4.2 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>6 4.2 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='drc_practice_white_jersey_barrier_1'>
+        <pose>6 2.4 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>6 2.4 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='drc_practice_white_jersey_barrier_2'>
+        <pose>3 -8.6 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>3 -8.6 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='drc_practice_white_jersey_barrier_3'>
+        <pose>3 -6.8 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>3 -6.8 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='first_2015_trash_can'>
+        <pose>-0.199487 -0.170642 0.278385 -1.32762 -1.23139 2.49309</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-0.199487 -0.170642 0.278385 -1.32762 -1.23139 2.49309</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 -9.8 -0 -0 -5e-06</acceleration>
+          <wrench>0 0 -47.3414 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ground_plane'>
+        <pose>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='jersey_barrier'>
+        <pose>6.8501 8.78743 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>6.8501 8.78743 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='jersey_barrier_0'>
+        <pose>6.91713 -8.40218 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>6.91713 -8.40218 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose>2.78959 -7.03976 35.7737 -0 1.41379 1.57253</pose>
+        <pose>5.59326 -2.61028 50.6898 3.3e-05 1.5698 1.57631</pose>
         <view_controller>orbit</view_controller>
         <projection_type>perspective</projection_type>
       </camera>
     </gui>
-    <model name='Lamp Post_0'>
-      <static>1</static>
-      <link name='link'>
-        <collision name='collision'>
-          <geometry>
-            <mesh>
-              <uri>model://lamp_post/meshes/lamp_post.dae</uri>
-              <scale>3 3 3</scale>
-            </mesh>
-          </geometry>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-          <max_contacts>10</max_contacts>
-        </collision>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <uri>model://lamp_post/meshes/lamp_post.dae</uri>
-              <scale>3 3 3</scale>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>-0.120508 -9.18301 0 0 -0 0</pose>
-    </model>
   </world>
 </sdf>
