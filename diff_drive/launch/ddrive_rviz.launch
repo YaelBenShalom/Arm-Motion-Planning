@@ -6,7 +6,7 @@
    <arg name="x_pos" default="-3.0"/>
    <arg name="y_pos" default="-3.0"/>
    <arg name="z_pos" default="0.1"/>
-   
+
    <rosparam command="load" file="$(find diff_drive)/config/ddrive.yaml" />
    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find diff_drive)/urdf/ddrive.urdf.xacro" />
 
