@@ -25,7 +25,7 @@ In this assignment I created Xacro files of a differential-drive robot, simulate
 
     ![robot simulation in Gazebo - flip_over node](https://github.com/ME495-EmbeddedSystems/homework-3-YaelBenShalom/blob/master/diff_drive/GIFs/flip_over.gif)
 
-2. To launch the differential-drive robot using RViz simulation, run `roslaunch diff_drive ddrive_rviz.launch`
+    3. To launch the differential-drive robot using RViz simulation, run `roslaunch diff_drive ddrive_rviz.launch`
 
     ![robot simulation in rviz - follow_rect node](https://github.com/ME495-EmbeddedSystems/homework-3-YaelBenShalom/blob/master/diff_drive/GIFs/follow_rect_rviz.gif)
 
