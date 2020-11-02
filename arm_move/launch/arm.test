@@ -2,9 +2,9 @@
 
   <arg name="robot_name"                  default="px100"/>
   <arg name="dof"                         default="4"/>
-  <arg name="use_fake"                    default="false"/>
+  <arg name="use_fake"                    default="true"/>
   <arg name="use_gazebo"                  default="false"/>
-  <arg name="use_actual"                  default="true"/>
+  <arg name="use_actual"                  default="false"/>
   <arg name="arm_operating_mode"          default="velocity"/>
   <arg name="use_cpp_interface"           default="false"/>
   <arg name="arm_demo_sequence"           default="false"/>
@@ -21,7 +21,7 @@
     <arg name="use_pid_cntlrs"            value="$(arg use_pid_cntlrs)"/>
   </include>
 
-  <group if="$(arg use_python_interface)">
+  <!-- <group if="$(arg use_python_interface)">
     <node name="mover" pkg="arm_move" type="mover" ns="$(arg robot_name)">
       <param name="robot_name" value="$(arg robot_name)"/>
       <param name="dof" value="$(arg dof)"/>
@@ -29,6 +29,8 @@
       <remap from="/collision_object" to="/$(arg robot_name)/collision_object"/>
       <rosparam param="waypoints" command="load" file="$(find arm_move)/config/waypoints.yaml" />
     </node>
-  </group>
+  </group> -->
+
+  <test test-name="arm_test" pkg="arm_move" type="arm_test" />
 
 </launch>

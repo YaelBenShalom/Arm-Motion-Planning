@@ -11,6 +11,7 @@ In this assignment I used the MoveIt Python API to create a planning scene and p
 
 ## Usage instructions
 
+3. To reset the scene (Taking a position and orientation of the realsense box and creates/moves the Realsense Box to the appropriate location), call the service `/px100/reset` (`rosservice call /px100/reset`).
 
 
 ## Configuration instructions
