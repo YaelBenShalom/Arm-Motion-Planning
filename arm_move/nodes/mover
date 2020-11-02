@@ -47,7 +47,7 @@ class Mover:
         # arm so we set `group_name = interbotix_arm`. If you are using a different robot,
         # you should change this value to the name of your robot arm planning group.
         # This interface can be used to plan and execute motions on the Interbotix Arm:
-        self.move_group = moveit_commander.MoveGroupCommander("interbotix_arm")
+        self.move_group = moveit_commander.MoveGroupCommander('interbotix_arm')
         self.gripper_group = moveit_commander.MoveGroupCommander('interbotix_gripper')
         
         # We create a `DisplayTrajectory` publisher which is used later to publish
@@ -93,12 +93,12 @@ class Mover:
         reset = rospy.ServiceProxy('reset', Empty)
         reset()
 
-        # rospy.sleep(self.sleep)
-        # rospy.wait_for_service('follow')
-        # follow = rospy.ServiceProxy('follow', Empty)
-        # follow()
+        rospy.sleep(self.sleep)
+        rospy.wait_for_service('follow')
+        follow = rospy.ServiceProxy('follow', Empty)
+        follow()
 
-
+        
     def reset_callback(self, message): 
         """ Callback function for reset service (type - Empty).
         The service:
@@ -114,9 +114,9 @@ class Mover:
         box_pose = PoseStamped()
         box_pose.header.frame_id = 'world'
         box_pose.pose.orientation.w = 1.0
-        box_pose.pose.position.x = 0.18
+        box_pose.pose.position.x = 0.15
         box_pose.pose.position.y = 0
-        box_pose.pose.position.z = 0.025
+        box_pose.pose.position.z = 0.026
         box_name = "realsense_box"
         self.scene.add_box(box_name, box_pose, size=(0.09, 0.14, 0.052))
 
@@ -149,15 +149,15 @@ class Mover:
             self.gripper_group.set_named_target("Closed")
         else:
             self.gripper_group.set_named_target("Open") 
-        self.gripper_group.go()
-        self.gripper_group.stop()
-        self.gripper_group.clear_pose_targets()
-        self.waypoints.append(waypoint)
+        (success_flag, trajectory_message, planning_time, error_code) = self.gripper_group.plan()
+        if success_flag:    
+            self.gripper_group.execute(trajectory_message, wait=True)
+            self.gripper_group.stop()
+            self.gripper_group.clear_pose_targets()
+            self.waypoints.append(waypoint)
+            
+        return error_code
 
-
-        return [] # TODO
-        # else:
-        #     return []
 
     def follow_callback(self, message): 
         """ Callback function for follow service (type - Empty).
