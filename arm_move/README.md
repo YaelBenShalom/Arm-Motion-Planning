@@ -22,4 +22,6 @@ If the software fails to plan a path, it uses MoveItErrorCode to interpret the f
 The scene also resets as part of the arm initialization process. 
 
 4. To follow the waypoints (in sequence), call the service `/px100/follow` (`rosservice call /px100/reset`).
-The service calls the `step` service and moves the arm to each waypoint. 
+The service calls the `step` service and moves the arm to each waypoint. If there is no available path, the `step` service returns `MoveItErrorCode` and stopz moving the arm (for success path planning, the service returns *MoveItErrorCode = 1*).
+
+5. To test the package using the `arm.test` launchfile, run `catkin_make run_tests`

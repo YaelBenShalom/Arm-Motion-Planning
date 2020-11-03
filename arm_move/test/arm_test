@@ -2,7 +2,8 @@
 
 import copy
 import rospy
-from nodes.mover import Mover
+import arm_move
+from arm_move.nodes.mover import Mover
 from arm_move.srv import Step
 from geometry_msgs.msg import Pose
 import unittest
@@ -11,8 +12,6 @@ class ArmTest(unittest.TestCase):
 
     def test_reset_and_step(self):
         mover = Mover()
-        # req = MyServiceRequest()
-        # self.assertTrue(mover.reset())
         mover.reset()
 
         step_msg = Step()
@@ -20,11 +19,12 @@ class ArmTest(unittest.TestCase):
         pose_goal.orientation.w = 1.0
         pose_goal.position.x = 0.1
         pose_goal.position.y = 0
-        pose_goal.position.z = -0.2
+        pose_goal.position.z = 0.2
         step_msg.gripper = False
         step_msg.pose = copy.deepcopy(pose_goal)
         ret = mover.step(step_msg.pose, step_msg.gripper)
-        self.assertTrue(ret == [])
+        print("ret", ret)
+        self.assertTrue(ret == 1)
 
 if __name__ == "__main__":
     # unittest.main() doesn't start roscore

@@ -141,7 +141,10 @@ class Mover:
         gripper = message.gripper
 
         self.move_group.set_pose_target(waypoint)
-        self.move_group.go(wait=True)
+        (success_flag, trajectory_message, planning_time, error_code) = self.move_group.plan()
+        if not success_flag:
+            return error_code
+        self.move_group.execute(trajectory_message, wait=True)
         self.move_group.stop()
         self.move_group.clear_pose_targets()
 
@@ -149,12 +152,10 @@ class Mover:
             self.gripper_group.set_named_target("Closed")
         else:
             self.gripper_group.set_named_target("Open") 
-        (success_flag, trajectory_message, planning_time, error_code) = self.gripper_group.plan()
-        if success_flag:    
-            self.gripper_group.execute(trajectory_message, wait=True)
-            self.gripper_group.stop()
-            self.gripper_group.clear_pose_targets()
-            self.waypoints.append(waypoint)
+        self.gripper_group.go()
+        self.gripper_group.stop()
+        self.gripper_group.clear_pose_targets()
+        self.waypoints.append(waypoint)
             
         return error_code
 
