@@ -1,10 +1,19 @@
 #!/usr/bin/env python3
 
 """
- The turtle_interpret node translates a custom velocity message into a
- geometry_msgs/Twist that can be used by the turtlesim
-SUBSCRIBES:
-  TurtleVel
+ The mover node move the arm trought a series of waypoints using the following
+ services:
+
+SERVICES:
+  reset (Empty) - Takes a position and orientation of the realsense box and
+                    creates/moves the Realsense Box to the appropriate location
+                - Moves the robot to its pre-defined 'Home' position without
+                    hitting the box
+                - Reset takes a parameter that determines if a series of waypoints
+                    are cleared or not.
+  step (Step)   - Recorded waypoints should be stored as ros parameters so they
+                    can be accessed from the parameter server.
+  follow (Empty)- Has the robots move to each waypoint, in sequence
 """
 
 import sys
@@ -33,6 +42,8 @@ class Mover:
         self.gripper_list = rospy.get_param('/px100/mover/waypoints').get('gripper')
         self.robot_name = rospy.get_param("~robot_name")
         self.dof = rospy.get_param("~dof")
+        self.clear_waypoints = rospy.get_param("~clear_waypoints")
+        self.run_once = rospy.get_param("~run_once")
 
         # Instantiate a `RobotCommander` object. This object is the outer-level interface to
         # the robot:
@@ -73,7 +84,7 @@ class Mover:
         print(self.robot.get_current_state())
         print("")
 
-        #Initialize table position:
+        # Initialize table position:
         box_pose = PoseStamped()
         box_pose.header.frame_id = "world"
         box_pose.pose.position.x = 0
@@ -82,21 +93,11 @@ class Mover:
         box_name = "table"
         self.scene.add_box(box_name, box_pose, size=(1, 1, 0.1))
 
-        self.waypoints = []
-        self.sleep = 0.5
+        self.waypoints = [] # Initialize the list of Recorded waypoints
+        self.sleep = 0.5 # Initialize rospy.sleep() time
         self.reset = rospy.Service("reset", Empty, self.reset_callback)
         self.step = rospy.Service("step", Step, self.step_callback)
         self.follow = rospy.Service("follow", Empty, self.follow_callback)
-        
-        # Initialize position to home position:
-        rospy.wait_for_service('reset')
-        reset = rospy.ServiceProxy('reset', Empty)
-        reset()
-
-        rospy.sleep(self.sleep)
-        rospy.wait_for_service('follow')
-        follow = rospy.ServiceProxy('follow', Empty)
-        follow()
 
         
     def reset_callback(self, message): 
@@ -120,12 +121,13 @@ class Mover:
         box_name = "realsense_box"
         self.scene.add_box(box_name, box_pose, size=(0.09, 0.14, 0.052))
 
-        self.move_group.set_named_target("Home")
+        self.move_group.set_named_target("Home") # Move the robot to its pre-defined 'Home' position.
         self.move_group.go()
         self.move_group.stop()
         self.move_group.clear_pose_targets()
 
-        # TODO - Reset takes a parameter that determines if a series of waypoints are cleared or not.
+        if self.clear_waypoints:
+            self.waypoints = [] # Clear the waypoints recording if the parameter 'clear_waypoints' is True
 
         return EmptyResponse()
 
@@ -143,7 +145,9 @@ class Mover:
         self.move_group.set_pose_target(waypoint)
         (success_flag, trajectory_message, planning_time, error_code) = self.move_group.plan()
         if not success_flag:
+            # If fail to plan a path
             return error_code
+
         self.move_group.execute(trajectory_message, wait=True)
         self.move_group.stop()
         self.move_group.clear_pose_targets()
@@ -152,10 +156,10 @@ class Mover:
             self.gripper_group.set_named_target("Closed")
         else:
             self.gripper_group.set_named_target("Open") 
-        self.gripper_group.go()
+        self.gripper_group.go() # Move the gripper according to set_named_target()
         self.gripper_group.stop()
         self.gripper_group.clear_pose_targets()
-        self.waypoints.append(waypoint)
+        self.waypoints.append(waypoint) # Record the waypoint by adding it to the waypoints list
             
         return error_code
 
@@ -168,19 +172,22 @@ class Mover:
         """
         rospy.logdebug(f"Follow Message")
         rospy.wait_for_service('step')
-        step = rospy.ServiceProxy('step', Step)
+        step = rospy.ServiceProxy('step', Step) # Call the step service
 
-        for i in range(len(self.x_list)):
-            step_msg = Step()
-            pose_goal = Pose()
-            pose_goal.orientation.w = 1.0
-            pose_goal.position.x = self.x_list[i]
-            pose_goal.position.y = self.y_list[i]
-            pose_goal.position.z = self.z_list[i]
-            step_msg.gripper = self.gripper_list[i]
-            step_msg.pose = copy.deepcopy(pose_goal)
-            step(step_msg.pose, step_msg.gripper)
-            rospy.sleep(self.sleep)
+        while not rospy.is_shutdown():
+            for i in range(len(self.x_list)):
+                step_msg = Step()
+                pose_goal = Pose()
+                pose_goal.orientation.w = 1.0
+                pose_goal.position.x = self.x_list[i]
+                pose_goal.position.y = self.y_list[i]
+                pose_goal.position.z = self.z_list[i]
+                step_msg.gripper = self.gripper_list[i]
+                step_msg.pose = copy.deepcopy(pose_goal)
+                step(step_msg.pose, step_msg.gripper) 
+                rospy.sleep(self.sleep)
+            if self.run_once:
+                return EmptyResponse()
 
         return EmptyResponse()
 

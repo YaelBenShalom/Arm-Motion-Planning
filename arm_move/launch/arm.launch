@@ -10,6 +10,8 @@
   <arg name="arm_demo_sequence"           default="false"/>
   <arg name="use_python_interface"        default="true"/>
   <arg name="use_pid_cntlrs"              default="false"/>
+  <arg name="clear_waypoints"             default="true"/>
+  <arg name="run_once"                    default="true"/>
 
   <include file="$(find interbotix_moveit)/launch/interbotix_moveit.launch">
     <arg name="robot_name"                value="$(arg robot_name)"/>
@@ -25,6 +27,8 @@
     <node name="mover" pkg="arm_move" type="mover" ns="$(arg robot_name)">
       <param name="robot_name" value="$(arg robot_name)"/>
       <param name="dof" value="$(arg dof)"/>
+      <param name="clear_waypoints" value="$(arg clear_waypoints)"/>
+      <param name="run_once" value="$(arg run_once)"/>
       <remap from="/attached_collision_object" to="/$(arg robot_name)/attached_collision_object"/>
       <remap from="/collision_object" to="/$(arg robot_name)/collision_object"/>
       <rosparam param="waypoints" command="load" file="$(find arm_move)/config/waypoints.yaml" />
