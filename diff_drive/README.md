@@ -13,7 +13,7 @@ In this assignment I created Xacro files of a differential-drive robot, simulate
 
 ## Usage and Configuration instructions
 
-1. To launch the differential-drive robot in the `ddrive` world using Gazebo simulation, run `roslaunch diff_drive ddrive.launch`. The robot starts from position *(x,y)* = *(-3,-3)* in rest mode.
+1. To launch the differential-drive robot in the `ddrive` world using Gazebo simulation, run `roslaunch diff_drive ddrive.launch`. The robot starts from position *(x,y) = (-3,-3)* in rest mode.
 
     1. To make the robot follow a rectangular path, add `follow_rect:=True` to the roslaunch command.
 

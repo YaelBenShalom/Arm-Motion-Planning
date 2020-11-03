@@ -28,6 +28,7 @@
       <param name="robot_name" value="$(arg robot_name)"/>
       <param name="dof" value="$(arg dof)"/>
       <param name="clear_waypoints" value="$(arg clear_waypoints)"/>
+      <param name="run_once" value="$(arg run_once)"/>
       <remap from="/attached_collision_object" to="/$(arg robot_name)/attached_collision_object"/>
       <remap from="/collision_object" to="/$(arg robot_name)/collision_object"/>
       <rosparam param="waypoints" command="load" file="$(find arm_move)/config/waypoints.yaml" />
