@@ -22,7 +22,7 @@ class ArmTest(unittest.TestCase):
         rospy.wait_for_service('/px100/reset')
         reset = rospy.ServiceProxy('/px100/reset', Empty)
         rospy.loginfo(f"before reset call")
-        reset() # Calling the reset service
+        reset.call() # Calling the reset service
         rospy.loginfo(f"after reset")
         
         step_msg = Step()
@@ -39,10 +39,7 @@ class ArmTest(unittest.TestCase):
         error_code = step.call(step_msg.pose, step_msg.gripper) # Calling the step service
         rospy.loginfo(f"error_code: {error_code}")
 
-        result = False
-        if (error_code == -1): # The service should return an error code
-            result = True
-        self.assertTrue(result) # Check if the test pass
+        self.assertEqual(error_code.code.val, -1) # Check if the test passed
 
 if __name__ == "__main__":
     # unittest.main() doesn't start roscore
