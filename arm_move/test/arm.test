@@ -2,9 +2,9 @@
 
   <arg name="robot_name"                  default="px100"/>
   <arg name="dof"                         default="4"/>
-  <arg name="use_fake"                    default="false"/>
+  <arg name="use_fake"                    default="true"/>
   <arg name="use_gazebo"                  default="false"/>
-  <arg name="use_actual"                  default="true"/>
+  <arg name="use_actual"                  default="false"/>
   <arg name="arm_operating_mode"          default="velocity"/>
   <arg name="use_cpp_interface"           default="false"/>
   <arg name="arm_demo_sequence"           default="false"/>

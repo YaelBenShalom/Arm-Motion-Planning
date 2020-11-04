@@ -213,4 +213,5 @@ catkin_install_python(PROGRAMS
 if(CATKIN_ENABLE_TESTING)
   find_package(rostest REQUIRED)
   add_rostest(test/arm.test)
+#  add_rostest(test/arm_test.launch)
 endif()
