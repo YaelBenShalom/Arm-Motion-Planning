@@ -4,7 +4,6 @@ import sys
 import copy
 import rospy
 import arm_move
-import moveit_commander
 from arm_move.srv import Step
 from std_srvs.srv import Empty, EmptyResponse
 from geometry_msgs.msg import Pose
@@ -14,9 +13,9 @@ class ArmTest(unittest.TestCase):
     def __init__(self, *args, **kwargs):
         super(ArmTest, self).__init__(*args, **kwargs)
         rospy.init_node('arm_test')
-
-    def test_reset_and_step(self):
-        """ Function to check the returned error code value of 'step' service
+    
+    def test_unvalid_path(self):
+        """ Function to check the returned error-code value of 'step' service
         with an impossible waypoint
         """
         rospy.loginfo(f"before reset")
@@ -27,7 +26,7 @@ class ArmTest(unittest.TestCase):
         rospy.loginfo(f"after reset")
         
         step_msg = Step()
-        pose_goal = Pose()
+        pose_goal = Pose() # Step message
         pose_goal.orientation.w = 1.0
         pose_goal.position.x = 0.1
         pose_goal.position.y = 0
@@ -43,7 +42,7 @@ class ArmTest(unittest.TestCase):
         result = False
         if (error_code == -1): # The service should return an error code
             result = True
-        self.assertTrue(True) # The test pass
+        self.assertTrue(result) # Check if the test pass
 
 if __name__ == "__main__":
     # unittest.main() doesn't start roscore
