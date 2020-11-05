@@ -2,14 +2,14 @@
 
 """
 The flip_over node publishes a custom velocity message into a geometry_msgs/Twist
-and publish to the turtlebot cmd_vel in order to draw the figure eight
+and publish to the robot's cmd_vel in order to drive back and forth. 
 
 PUBLISHERS:
   pub_vel (geometry_msgs/Twist) - the linear and angular velocity of the robot
   path_pub (nav_msgs/Path) - the path (x,y) of the robot
 
 SUBSCRIBERS:
-  sub_odom (nav_msgs/Odometry) - the linear and angular velocity of the turtlebot
+  sub_odom (nav_msgs/Odometry) - the linear and angular velocity of the robot
 
 PARAMETERS:
   pub_freq - The frequency at which to publish the messages
@@ -22,11 +22,7 @@ import geometry_msgs.msg
 from geometry_msgs.msg import Twist, Pose, Point, PoseStamped, Quaternion, Vector3
 from nav_msgs.msg import Path, Odometry
 from std_srvs.srv import Empty, EmptyResponse
-import sympy
-from sympy.abc import t
-from sympy import symbols, Eq, Function, cos, sin, atan2, pi
-import tf
-import tf2_ros
+
 
 class FlipOver():
     """ Publish a geometry_msgs/Twist of the linear and angular
@@ -42,7 +38,6 @@ class FlipOver():
         self.path_pub = rospy.Publisher("path", Path, queue_size = 10)
 
         self.rate = rospy.Rate(self.R)
-        self.move_turtlebot = True
         self.x = 0
         self.y = 0
         self.x_init = -3
@@ -88,16 +83,16 @@ class FlipOver():
 
 
     def run(self):
+        """ Run the node
+        """
         rospy.logdebug(f"Run Message")
-        count = 0
         while not rospy.is_shutdown() and self.angle > -0.99:
-            count += 1
             rospy.logdebug(f"1. velocity = {self.V}, angle = {self.angle}, x = {self.x}, y = {self.y}")
             self.move(self.V, 0)
         self.move(0, 0)
         rospy.sleep(2)
         self.V *= -1
-        while not rospy.is_shutdown()and self.angle < -0.08:
+        while not rospy.is_shutdown() and self.angle < -0.08:
             rospy.logdebug(f"2. velocity = {self.V}, angle = {self.angle}, x = {self.x}, y = {self.y}")
             self.move(self.V, 0)
         self.move(0, 0)

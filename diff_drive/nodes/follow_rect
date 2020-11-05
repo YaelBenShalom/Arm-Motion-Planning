@@ -2,14 +2,14 @@
 
 """
  The follow_rect node publishes a custom velocity message into a geometry_msgs/Twist
- and publish to the turtlebot cmd_vel in order to draw the figure eight
+ and publish to the robot's cmd_vel in order to drive in a rectangle figure
 
 PUBLISHERS:
   pub_vel (geometry_msgs/Twist) - the linear and angular velocity of the robot
   path_pub (nav_msgs/Path) - the path (x,y) of the robot
 
 SUBSCRIBERS:
-  sub_odom (nav_msgs/Odometry) - the linear and angular velocity of the turtlebot
+  sub_odom (nav_msgs/Odometry) - the linear and angular velocity of the robot
 
 PARAMETERS:
   width - The width of the figure eight
@@ -25,11 +25,7 @@ import geometry_msgs.msg
 from geometry_msgs.msg import Twist, Pose, Point, PoseStamped, Quaternion, Vector3
 from nav_msgs.msg import Path, Odometry
 from std_srvs.srv import Empty, EmptyResponse
-import sympy
-from sympy.abc import t
-from sympy import symbols, Eq, Function, cos, sin, atan2, pi
-import tf
-import tf2_ros
+
 
 class FollowRect():
     """ Publish a geometry_msgs/Twist of the linear and angular
@@ -48,10 +44,6 @@ class FollowRect():
         self.path_pub = rospy.Publisher("path", Path, queue_size = 10)
 
         self.rate = rospy.Rate(self.R)
-        self.move_turtlebot = True
-        self._t = 0
-        self.init_t = rospy.get_time()
-        self.round = 1
         self.x = 0
         self.y = 0
         self.x_init = -3
@@ -95,17 +87,15 @@ class FollowRect():
                                             position = Point(self.x, self.y, 0), 
                                             orientation = Quaternion(0, 0, 0, 1))))
         self.path_pub.publish(self.path)
-        self._t = rospy.get_time() - self.init_t
         twist = self.twist_pub(x, w)
         self.pub_vel.publish(twist)
-        # if int(self._t/self.round) == self.T:
-        #     self.path.poses = []
-        #     self.round += 1
         self.rate.sleep()
 
 
 
     def run(self):
+        """ Run the node
+        """
         rospy.logdebug(f"Run Message")
         while not rospy.is_shutdown() and self.x < self.W:
             rospy.logdebug(f"1. angle = {self.angle}, x = {self.x}, y = {self.y}")
