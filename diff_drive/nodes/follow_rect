@@ -5,19 +5,19 @@
  and publish to the turtlebot cmd_vel in order to draw the figure eight
 
 PUBLISHERS:
-  cmd_vel (geometry_msgs/Twist) - the linear and angular velocity of the turtlebot
-  path (nav_msgs/Path) - the path (x,y) of the turtlebot
+  pub_vel (geometry_msgs/Twist) - the linear and angular velocity of the robot
+  path_pub (nav_msgs/Path) - the path (x,y) of the robot
 
-SERVICES:   
-  pause (Empty) - stop the turtle's motion, in a way that the trajectory can be
-                    resumed
-  resume (Empty) - resume the turtle's motion along the trajectory
+SUBSCRIBERS:
+  sub_odom (nav_msgs/Odometry) - the linear and angular velocity of the turtlebot
 
 PARAMETERS:
   width - The width of the figure eight
   height - The height of the figure eight
   period - The amount of time it takes to complete the figure eight
   ~pub_freq - The frequency at which to publish the messages (a private parameter)
+  linear_velocity - The linear velocity of the robot
+  angular_velocity - The angular velocity of the robot
 """
 
 import rospy
@@ -62,10 +62,9 @@ class FollowRect():
 
 
     def position_callback(self, data):
-        """ Callback function for turtle_vel topic
-        Subscribes to a topic turtle_vel, listening for TurtleVel messages. 
-        The subscriber log the input as a debug level message and publishes
-        a corresponding geometry_msgs/Twist on cmd_vel.
+        """ Callback function for /diff/odom.
+        Subscribes to /diff/odom, to get the position (x, y, angle) of the robot. 
+        The subscriber updates the variables x, y and angle.
         
         Args:
           data from the subscricber
@@ -86,7 +85,7 @@ class FollowRect():
 
 
     def move(self, x, w):
-        """ Move the turtle by publish a twist messages to the cmd_vel
+        """ Move the robot by publish a twist messages to the cmd_vel
         """
         self.path.header.stamp = rospy.Time.now()
         self.path.header.frame_id = "world"
