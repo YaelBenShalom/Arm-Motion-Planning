@@ -44,7 +44,7 @@ class FollowRect():
         self.Omega = rospy.get_param("angular_velocity")    # initializing the angular velocity of the robot
 
         self.sub_odom = rospy.Subscriber("/diff/odom", Odometry, self.position_callback)
-        self.pub_vel = rospy.Publisher("diff/cmd_vel", Twist, queue_size = 10)
+        self.pub_vel = rospy.Publisher("/diff/cmd_vel", Twist, queue_size = 10)
         self.path_pub = rospy.Publisher("path", Path, queue_size = 10)
 
         self.rate = rospy.Rate(self.R)
