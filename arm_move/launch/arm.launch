@@ -1,0 +1,38 @@
+<launch>
+
+  <arg name="robot_name"                  default="px100"/>
+  <arg name="dof"                         default="4"/>
+  <arg name="use_fake"                    default="false"/>
+  <arg name="use_gazebo"                  default="false"/>
+  <arg name="use_actual"                  default="true"/>
+  <arg name="arm_operating_mode"          default="velocity"/>
+  <arg name="use_cpp_interface"           default="false"/>
+  <arg name="arm_demo_sequence"           default="false"/>
+  <arg name="use_python_interface"        default="true"/>
+  <arg name="use_pid_cntlrs"              default="false"/>
+  <arg name="clear_waypoints"             default="true"/>
+  <arg name="run_once"                    default="true"/>
+
+  <include file="$(find interbotix_moveit)/launch/interbotix_moveit.launch">
+    <arg name="robot_name"                value="$(arg robot_name)"/>
+    <arg name="dof"                       value="$(arg dof)"/>
+    <arg name="use_fake"                  value="$(arg use_fake)"/>
+    <arg name="use_gazebo"                value="$(arg use_gazebo)"/>
+    <arg name="use_actual"                value="$(arg use_actual)"/>
+    <arg name="arm_operating_mode"        value="$(arg arm_operating_mode)"/>
+    <arg name="use_pid_cntlrs"            value="$(arg use_pid_cntlrs)"/>
+  </include>
+
+  <group if="$(arg use_python_interface)">
+    <node name="mover" pkg="arm_move" type="mover" ns="$(arg robot_name)">
+      <param name="robot_name" value="$(arg robot_name)"/>
+      <param name="dof" value="$(arg dof)"/>
+      <param name="clear_waypoints" value="$(arg clear_waypoints)"/>
+      <param name="run_once" value="$(arg run_once)"/>
+      <remap from="/attached_collision_object" to="/$(arg robot_name)/attached_collision_object"/>
+      <remap from="/collision_object" to="/$(arg robot_name)/collision_object"/>
+      <rosparam param="waypoints" command="load" file="$(find arm_move)/config/waypoints.yaml" />
+    </node>
+  </group>
+
+</launch>
