@@ -17,4 +17,4 @@ This repository contains two packages: `arm_move` and `deff_drive`.
 
     ![robot simulation in Gazebo - follow_rect node](https://github.com/ME495-EmbeddedSystems/homework-3-YaelBenShalom/blob/master/diff_drive/GIFs/follow_rect.gif)
 
-    ![fake robot (rviz simulation) - arm_move node](https://github.com/ME495-EmbeddedSystems/homework-3-YaelBenShalom/blob/master/arm_move/GIFs/arm_move_rviz.gif)
+    ![robot simulation in Gazebo - flip_over node](https://github.com/ME495-EmbeddedSystems/homework-3-YaelBenShalom/blob/master/diff_drive/GIFs/flip_over.gif)
