@@ -11,7 +11,7 @@ This repository contains two packages: `arm_move` and `deff_drive`.
 
     Check out the package to learn more!
 
-2. `deff_drive` package uses Xacro files of a differential-drive robot and simulate it in Gazebo and controlled it using ROS. The robot is be able to follow a rectangular path or flip over and continue driving.
+2. `diff_drive` package uses Xacro files of a differential-drive robot and simulate it in Gazebo and controlled it using ROS. The robot is be able to follow a rectangular path or flip over and continue driving.
 
     ![robot simulation in Gazebo - follow_rect node](https://github.com/ME495-EmbeddedSystems/homework-3-YaelBenShalom/blob/master/diff_drive/GIFs/follow_rect.gif)
 
