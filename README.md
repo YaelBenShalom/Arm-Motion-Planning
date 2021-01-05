@@ -1,5 +1,5 @@
 # MECH_ENG_495 - Homework 3
-GitHub repository - `https://github.com/ME495-EmbeddedSystems/homework-3-YaelBenShalom`
+GitHub repository - `https://github.com/YaelBenShalom/Gazebo-Differential-Drive-and-Arm-Motion-Planning`
 
 
 ## Overview
