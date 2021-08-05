@@ -1,5 +1,4 @@
 # MECH_ENG_495 - Homework 3, Part 2
-GitHub repository - `https://github.com/ME495-EmbeddedSystems/homework-3-YaelBenShalom`
 
 
 ## Overview
@@ -12,11 +11,11 @@ If the software fails to plan a path, it uses MoveItErrorCode to interpret the f
 
 1. To launch the arm path-planning package with the real robot and on RVIZ simulation, run `roslaunch arm_move arm.launch`.
 
-    ![real robot - arm_move node](https://github.com/ME495-EmbeddedSystems/homework-3-YaelBenShalom/blob/master/arm_move/GIFs/arm_move.gif)
+    ![real robot - arm_move node](https://github.com/YaelBenShalom/Gazebo-Differential-Drive-and-Arm-Motion-Planning/blob/master/arm_move/GIFs/arm_move.gif)
 
 2. To launch the arm path-planning package without the real robot (only on RVIZ), add `use_fake:=True use_actual:=False`
 
-    ![fake robot (rviz simulation) - arm_move node](https://github.com/ME495-EmbeddedSystems/homework-3-YaelBenShalom/blob/master/arm_move/GIFs/arm_move_rviz.gif)
+    ![fake robot (rviz simulation) - arm_move node](https://github.com/YaelBenShalom/Gazebo-Differential-Drive-and-Arm-Motion-Planning/blob/master/arm_move/GIFs/arm_move_rviz.gif)
 
 3. To reset the scene (Taking a position and orientation of the Realsense box and creates/moves the Realsense Box to the appropriate location), call the service `/px100/reset` (`rosservice call /px100/reset`). The service clears the waypoints recording (by default) and move the arm to it's home position.
 

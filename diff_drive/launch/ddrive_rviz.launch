@@ -28,7 +28,7 @@
 
    <group if="$(arg Gazebo)">
         <include file="$(find gazebo_ros)/launch/empty_world.launch" >
-          <arg name="world_name" value="$(find diff_drive)/worlds/ddrive.world" />
+            <arg name="world_name" value="$(find diff_drive)/worlds/ddrive.world" />
         </include>
    </group>
 
