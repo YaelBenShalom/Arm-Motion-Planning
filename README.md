@@ -10,8 +10,8 @@
 
 ## Overview
 
-In this package I used the MoveIt Python API to create a planning scene and perform some path planning tasks (using `arm_move` package).
-The software plans a path to an object, without hitting an obstacle (a Realsense box), and if such path exists, the arm moves to the objects, pick it up and place it elsewhere
+In this package I used the MoveIt Python API to create a planning scene and perform some path planning tasks.<br>
+The software plans a path to an object, without hitting an obstacle (a Realsense box), and if such path exists, the arm moves to the objects, pick it up and place it elsewhere.<br>
 If the software fails to plan a path, it uses MoveItErrorCode to interpret the failure reason.
 
 
