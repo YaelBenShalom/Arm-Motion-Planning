@@ -1,4 +1,10 @@
-# MECH_ENG_495 - Homework 3, Part 2
+# Arm Motion Planning
+
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Usage and Configuration Instructions](#usage-and-configuration-instructions)
 
 
 ## Overview
@@ -7,15 +13,20 @@ In this assignment I used the MoveIt Python API to create a planning scene and p
 The software plans a path to an object, without hitting an obstacle (a Realsense box), and if such path exists, the arm moves to the objects, pick it up and place it elsewhere
 If the software fails to plan a path, it uses MoveItErrorCode to interpret the failure reason.
 
+
 ## Usage and Configuration instructions
 
 1. To launch the arm path-planning package with the real robot and on RVIZ simulation, run `roslaunch arm_move arm.launch`.
 
-    ![real robot - arm_move node](https://github.com/YaelBenShalom/Gazebo-Differential-Drive-and-Arm-Motion-Planning/blob/master/arm_move/GIFs/arm_move.gif)
+    <p align="center">
+        <img align="center" src="https://github.com/YaelBenShalom/Gazebo-Differential-Drive-and-Arm-Motion-Planning/blob/master/arm_move/GIFs/arm_move.gif">
+    </p>
 
 2. To launch the arm path-planning package without the real robot (only on RVIZ), add `use_fake:=True use_actual:=False`
 
-    ![fake robot (rviz simulation) - arm_move node](https://github.com/YaelBenShalom/Gazebo-Differential-Drive-and-Arm-Motion-Planning/blob/master/arm_move/GIFs/arm_move_rviz.gif)
+    <p align="center">
+        <img align="center" src="https://github.com/YaelBenShalom/Gazebo-Differential-Drive-and-Arm-Motion-Planning/blob/master/arm_move/GIFs/arm_move_rviz.gif">
+    </p>
 
 3. To reset the scene (Taking a position and orientation of the Realsense box and creates/moves the Realsense Box to the appropriate location), call the service `/px100/reset` (`rosservice call /px100/reset`). The service clears the waypoints recording (by default) and move the arm to it's home position.
 
